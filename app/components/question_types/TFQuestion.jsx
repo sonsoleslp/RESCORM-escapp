@@ -14,7 +14,7 @@ export default class TFQuestion extends React.Component {
       selected_choices_ids:[],
       answered:false,
     };
-    this.choices = [{id: true, value: "Verdadero"}, {id: false, value: "Falso"}];
+    this.choices = [{id:true, value:"Verdadero"}, {id:false, value:"Falso"}];
   }
   componentWillUpdate(prevProps, prevState){
     if(prevProps.question !== this.props.question){
@@ -32,9 +32,9 @@ export default class TFQuestion extends React.Component {
     let correctAnswers = 0;
     let incorrectAnswers = 0;
     let blankAnswers = 0;
-    if (this.state.selected_choices_ids.indexOf(this.props.question.answer) !== -1) {
+    if(this.state.selected_choices_ids.indexOf(this.props.question.answer) !== -1){
       correctAnswers = 1;
-    } else if (this.state.selected_choices_ids.indexOf(!this.props.question.answer) !== -1) {
+    } else if(this.state.selected_choices_ids.indexOf(!this.props.question.answer) !== -1){
       incorrectAnswers = 1;
     } else {
       blankAnswers = 1;
@@ -58,11 +58,11 @@ export default class TFQuestion extends React.Component {
   }
   render(){
     let choices = [];
-      for(let i = 0; i < this.choices.length; i++){
-        choices.push(<MCQuestionChoiceSingle key={"MyQuestion_" + "question_choice_" + i} correct={this.choices[i].id === this.props.question.answer} choice={this.choices[i]} checked={this.state.selected_choices_ids.indexOf(this.choices[i].id) !== -1} handleChange={this.handleChoiceChange.bind(this)} questionAnswered={this.state.answered} config={this.props.config} tf/>);
-      }
+    for(let i = 0; i < this.choices.length; i++){
+      choices.push(<MCQuestionChoiceSingle key={"MyQuestion_" + "question_choice_" + i} correct={this.choices[i].id === this.props.question.answer} choice={this.choices[i]} checked={this.state.selected_choices_ids.indexOf(this.choices[i].id) !== -1} handleChange={this.handleChoiceChange.bind(this)} questionAnswered={this.state.answered} config={this.props.config} tf/>);
+    }
     return (
-      [<div className="question">
+    [<div className="question">
         <h1>{this.props.question.value}</h1>
         {choices}
       </div>,

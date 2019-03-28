@@ -73,7 +73,7 @@ export const quiz_example = {
     },
     {
       "type":"multiple_choice",
-      "single": true,
+      "single":true,
       "value":"¿Cuál de las siguientes afirmaciones es verdadera?",
       "choices":[
         {
@@ -98,9 +98,9 @@ export const quiz_example = {
     },
     {
       "type":"true_false",
-      "single": true,
+      "single":true,
       "value":"La capital de España es Madrid",
-      "answer": true,
+      "answer":true,
       "difficulty":8,
     },
   ],

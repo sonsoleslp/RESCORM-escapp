@@ -17,7 +17,7 @@ export default class Header extends React.Component {
       // trackingTexts.push(this.props.I18n.getTrans("i.progress_measure") + ": null");
     }
     if(typeof this.props.tracking.score === "number"){
-      score = (this.props.tracking.score * 100).toFixed(2) + '%' ;
+      score = (this.props.tracking.score * 100).toFixed(2) + '%';
       trackingTexts.push(this.props.I18n.getTrans("i.score") + ": " + (this.props.tracking.score * 100).toFixed(1) + "%");
     } else {
       score = "0.00%";
@@ -34,20 +34,13 @@ export default class Header extends React.Component {
       }
     }*/
 
- 
-
     return (
       <div className="header_wrapper">
-        <header className="secondary-color">   
-        {this.props.config.logo ? <img src={this.props.config.logo}/>  : <span className="placeholder"/> }
-          <h1 id="heading">{this.props.config.title}
-          {this.props.config.feedback ? <span className="score">{score}</span> : null}
-          </h1>
-        </header>
+        <header>
         <div className="progressbar-container">
-          <div className="progressbar primary-color" style={{width: progress +"%"}}></div>
+          <div className="progressbar primary-color" style={{width:progress + "%"}} />
         </div>
-
+        </header>
       </div>
     );
   }

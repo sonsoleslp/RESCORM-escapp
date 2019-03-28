@@ -23,14 +23,12 @@ export default class MCQuestion extends React.Component {
   handleChoiceChange(choice){
     let newSelectedChoices = Object.assign([], this.state.selected_choices_ids);
     let indexOf = newSelectedChoices.indexOf(choice.id);
-    if (this.props.question.single) {
+    if(this.props.question.single){
       newSelectedChoices = [choice.id];
+    } else if(indexOf === -1){
+      newSelectedChoices.push(choice.id);
     } else {
-      if(indexOf === -1){
-        newSelectedChoices.push(choice.id);
-      } else {
-        newSelectedChoices.splice(indexOf, 1);
-      }
+      newSelectedChoices.splice(indexOf, 1);
     }
 
     this.setState({selected_choices_ids:newSelectedChoices});
@@ -72,7 +70,7 @@ export default class MCQuestion extends React.Component {
   }
   render(){
     let choices = [];
-    if (this.props.question.single) {
+    if(this.props.question.single){
       for(let i = 0; i < this.props.question.choices.length; i++){
         choices.push(<MCQuestionChoiceSingle key={"MyQuestion_" + "question_choice_s_" + i} choice={this.props.question.choices[i]} checked={this.state.selected_choices_ids.indexOf(this.props.question.choices[i].id) !== -1} handleChange={this.handleChoiceChange.bind(this)} questionAnswered={this.state.answered} config={this.props.config} />);
       }
@@ -83,11 +81,11 @@ export default class MCQuestion extends React.Component {
     }
 
     return (
-      [<div key="question" className="question">
+    [<div key="question" className="question">
         <h1>{this.props.question.value}</h1>
         {choices}
       </div>,
-        <QuestionButtons key="buttons" I18n={this.props.I18n} onAnswerQuestion={this.onAnswerQuestion.bind(this)} onResetQuestion={this.onResetQuestion.bind(this)} onResetQuiz={this.props.onResetQuiz} onNextQuestion={this.onNextQuestion.bind(this)} answered={this.state.answered} quizCompleted={this.props.quizCompleted} allow_finish={this.props.isLastQuestion}/>]
+      <QuestionButtons key="buttons" I18n={this.props.I18n} onAnswerQuestion={this.onAnswerQuestion.bind(this)} onResetQuestion={this.onResetQuestion.bind(this)} onResetQuiz={this.props.onResetQuiz} onNextQuestion={this.onNextQuestion.bind(this)} answered={this.state.answered} quizCompleted={this.props.quizCompleted} allow_finish={this.props.isLastQuestion}/>]
     );
   }
 }

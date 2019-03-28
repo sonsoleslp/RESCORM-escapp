@@ -11,19 +11,19 @@ export default class QuestionButtons extends React.Component {
     let resetQuiz = "";
     return (
       <div className="questionButtonsWrapper">
-        <button className="answerQuestion primary-color" onClick={this.props.onAnswerQuestion} disabled={disable_answer}>
+        <button className="answerQuestion btn btn-primary" onClick={this.props.onAnswerQuestion} disabled={disable_answer}>
           <i className="material-icons">done</i>
           <span>{this.props.I18n.getTrans("i.answer")}</span>
         </button>
-        {/*<button className="resetQuestion primary-color" onClick={this.props.onResetQuestion} disabled={disable_resetQuestion}>
+        {/* <button className="resetQuestion primary-color" onClick={this.props.onResetQuestion} disabled={disable_resetQuestion}>
           {this.props.I18n.getTrans("i.reset_question")}
         </button>*/}
-        <button className="nextQuestion primary-color" onClick={this.props.onNextQuestion} disabled={disable_next}>
+        <button className="nextQuestion btn btn-primary" onClick={this.props.onNextQuestion} disabled={disable_next}>
           <i className="material-icons">skip_next</i>
           <span>{this.props.allow_finish ? this.props.I18n.getTrans("i.finish_quiz") : this.props.I18n.getTrans("i.next")}</span>
         </button>
         {(this.props.allow_finish) && (disable_next === false) ? (
-          <button className="resetQuiz primary-color" onClick={this.props.onResetQuiz}>
+          <button className="resetQuiz btn btn-primary" onClick={this.props.onResetQuiz}>
             <i className="material-icons">replay</i>
             <span>{this.props.I18n.getTrans("i.reset_quiz")}</span>
           </button>) : null}

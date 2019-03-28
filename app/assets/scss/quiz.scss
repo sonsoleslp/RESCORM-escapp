@@ -9,7 +9,6 @@ div.question {
   flex:1;
   overflow: auto;
   h1 {
-    font-size: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
   }
@@ -30,14 +29,15 @@ div.question {
     vertical-align: middle;
     padding-left: 10px;
     &.correct {
-      color: #32e389;
+      color: var(--success);
     }
     &.incorrect {
-      color: tomato;
+      color: var(--danger);
     }
   }
   .feedbackInputAnswer{
-    color: tomato;
+    color: var(--danger);
+    display: inline-block;
   }
   input[type="text"], input[type="number"] {
     font-size: 23px;
@@ -67,18 +67,24 @@ div.question {
       }
     }
 
-    input[type="checkbox"] {
+     input[type="checkbox"] {
       width: 23px;
       height: 23px;
+       vertical-align: middle;
+       margin-top: 20px;
+       margin-left: 10px;
       cursor: pointer;
+       outline: none;
+    }
+    input[type="radio"] {
+      margin-top: 15px;
     }
     &[disabled]{
       cursor: default;
     }
 
-    p {
+     p {
       display: inline-block;
-      font-size: 20px;
       margin: 0px 0px 0px 0px;
     }
 }
@@ -89,18 +95,11 @@ div.questionButtonsWrapper {
    button.answerQuestion,   button.resetQuestion,   button.resetQuiz,  button.nextQuestion {
     padding: 13px;
     margin-right: 10px;
-    color: white;
-    background: white;
-    border: none; //2px solid black;
-    font-size: 20px;
     cursor: pointer;
 
   }
 
   button[disabled]{
-    color: white;
-    border: none;// 2px solid gray;
-    cursor: default;
     opacity: 0.5;
   }
   i {

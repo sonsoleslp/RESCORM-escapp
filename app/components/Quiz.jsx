@@ -5,7 +5,7 @@ import * as Utils from '../vendors/Utils.js';
 import {addObjectives, resetObjectives, finishApp} from './../reducers/actions';
 
 import QuizHeader from './QuizHeader.jsx';
-import { MCQuestion, TFQuestion, Numerical, ShortAnswer, Essay } from './question_types/_questions';
+import {MCQuestion, TFQuestion, Numerical, ShortAnswer, Essay} from './question_types/_questions';
 
 export default class Quiz extends React.Component {
   constructor(props){
@@ -63,7 +63,7 @@ export default class Quiz extends React.Component {
     case "multiple_choice":
       currentQuestionRender = (<MCQuestion config={this.props.config} question={currentQuestion} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);
       break;
-    case "true_false":  
+    case "true_false":
       currentQuestionRender = (<TFQuestion config={this.props.config} question={currentQuestion} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);
       break;
     case "numerical":
@@ -81,7 +81,7 @@ export default class Quiz extends React.Component {
 
     return (
       <div className="quiz">
-        {/*<QuizHeader I18n={this.props.I18n} quiz={this.state.quiz} currentQuestionIndex={this.state.current_question_index}/>*/}
+        {/* <QuizHeader I18n={this.props.I18n} quiz={this.state.quiz} currentQuestionIndex={this.state.current_question_index}/>*/}
         {currentQuestionRender}
       </div>
     );

@@ -26,5 +26,12 @@ div.finish_screen{
 
 .CircularProgressbar .CircularProgressbar-path {
     stroke-linecap: square !important;
-    
+	stroke: var(--info) !important;
+}
+.CircularProgressbar .CircularProgressbar-text {
+	fill: var(--dark) !important;;
+}
+
+.CircularProgressbar .CircularProgressbar-trail {
+	stroke: var(--light) !important;
 }
