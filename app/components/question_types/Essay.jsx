@@ -39,7 +39,9 @@ export default class Essay extends React.Component {
   }
   render(){
     return [<div key="question" className="question">
-        <h1>{this.props.question.value}</h1>
+        {this.props.question.format === "html" ? <div dangerouslySetInnerHTML={{__html: this.props.question.value}}>
+        </div> : 
+        <h1>{this.props.question.value}</h1>}
         <textarea className="form-control" value={this.state.userAnswer} onChange={this.handleChange.bind(this)}/>
       </div>,
       <QuestionButtons key="buttons" I18n={this.props.I18n} onAnswerQuestion={this.onAnswerQuestion.bind(this)} onResetQuestion={this.onResetQuestion.bind(this)} onResetQuiz={this.props.onResetQuiz} onNextQuestion={this.onNextQuestion.bind(this)} answered={this.state.answered} quizCompleted={this.props.quizCompleted} allow_finish={this.props.isLastQuestion}/>];

@@ -79,10 +79,11 @@ export default class MCQuestion extends React.Component {
         choices.push(<MCQuestionChoice key={"MyQuestion_" + "question_choice_" + i} choice={this.props.question.choices[i]} checked={this.state.selected_choices_ids.indexOf(this.props.question.choices[i].id) !== -1} handleChange={this.handleChoiceChange.bind(this)} questionAnswered={this.state.answered} config={this.props.config} />);
       }
     }
-
     return (
     [<div key="question" className="question">
-        <h1>{this.props.question.value}</h1>
+        {this.props.question.format === "html" ? <div dangerouslySetInnerHTML={{__html: this.props.question.value}}>
+        </div> : 
+        <h1>{this.props.question.value}</h1>}
         {choices}
       </div>,
       <QuestionButtons key="buttons" I18n={this.props.I18n} onAnswerQuestion={this.onAnswerQuestion.bind(this)} onResetQuestion={this.onResetQuestion.bind(this)} onResetQuiz={this.props.onResetQuiz} onNextQuestion={this.onNextQuestion.bind(this)} answered={this.state.answered} quizCompleted={this.props.quizCompleted} allow_finish={this.props.isLastQuestion}/>]

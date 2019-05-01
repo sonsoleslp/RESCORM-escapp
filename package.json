@@ -39,7 +39,7 @@
     "cross-env": "5.1.0",
     "eslint-plugin-jsx-a11y": "^5.1.0",
     "fs-extra": "^5.0.0",
-    "moodlexml-to-json": "^1.0.1-beta",
+    "moodlexml-to-json": "1.0.2-beta",
     "react": "16.0.0",
     "react-circular-progressbar": "^1.0.0",
     "react-dom": "^16.0.0",

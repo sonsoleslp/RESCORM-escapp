@@ -64,19 +64,19 @@ export class App extends React.Component {
         let question = r.questions[q];
         switch (question.type){
         case 'multichoice':
-          questions.push({type:'multiple_choice', value:question.questiontext, choices:(question.answers || []).map((a, id)=>{return {id, value:a.text, answer:a.score === 100};}), single:question.single});
+          questions.push({type:'multiple_choice', format: question.format, value:question.questiontext, choices:(question.answers || []).map((a, id)=>{return {id, value:a.text, answer:a.score === 100};}), single:question.single});
           break;
         case 'truefalse':
-          questions.push({type:'true_false', single:true, value:question.questiontext, answer:(question.answers || []).filter(a=> a.score === 100).map(a=> a.text)[0]});
+          questions.push({type:'true_false', format: question.format, single:true, value:question.questiontext, answer:(question.answers || []).filter(a=> a.score === 100).map(a=> a.text)[0]});
           break;
         case 'numerical':
-          questions.push({type:'numerical', value:question.questiontext, answer:(question.correctAnswer || []), tolerance:question.tolerance});
+          questions.push({type:'numerical', format: question.format, value:question.questiontext, answer:(question.correctAnswer || []), tolerance:question.tolerance});
           break;
         case 'shortanswer':
-          questions.push({type:'shortanswer', value:question.questiontext, answer:(question.answers || []).filter(a=> a.score === 100).map(a=>a.text)});
+          questions.push({type:'shortanswer', format: question.format, value:question.questiontext, answer:(question.answers || []).filter(a=> a.score === 100).map(a=>a.text)});
           break;
         case 'essay':
-          questions.push({type:'essay', value:question.questiontext});
+          questions.push({type:'essay', format: question.format, value:question.questiontext});
           break;
         case 'matching':
           break;
@@ -94,7 +94,7 @@ export class App extends React.Component {
   }
   componentDidMount(){
     if(GLOBAL_CONFIG.dev){
-      if(GLOBAL_CONFIG.moodleXmlPath){
+      if(GLOBAL_CONFIG.moodleXMLPath){
         this.parseMoodleXML(this.decode(GLOBAL_CONFIG.moodleXmlPath));
         this.setState({loading:false});
       } else {
@@ -102,7 +102,7 @@ export class App extends React.Component {
       }
 
     } else {
-      fetch(GLOBAL_CONFIG.moodleXmlPath || "assets/quiz.xml")
+      fetch(GLOBAL_CONFIG.moodleXMLPath || "assets/quiz.xml")
       .then(res => res.text())
       .then(res => {
         this.parseMoodleXML(res);
@@ -120,7 +120,7 @@ export class App extends React.Component {
 
 }
 function changeTheme(theme){
-  document.getElementById("theme").setAttribute('href', `https://bootswatch.com/4/${theme}/bootstrap.min.css`);
+  // document.getElementById("theme").setAttribute('href', `https://bootswatch.com/4/${theme}/bootstrap.min.css`);
 }
 
 function mapStateToProps(state){

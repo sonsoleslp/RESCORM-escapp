@@ -63,7 +63,9 @@ export default class TFQuestion extends React.Component {
     }
     return (
     [<div className="question">
-        <h1>{this.props.question.value}</h1>
+        {this.props.question.format === "html" ? <div dangerouslySetInnerHTML={{__html: this.props.question.value}}>
+        </div> : 
+        <h1>{this.props.question.value}</h1>}
         {choices}
       </div>,
       <QuestionButtons I18n={this.props.I18n} onAnswerQuestion={this.onAnswerQuestion.bind(this)} onResetQuestion={this.onResetQuestion.bind(this)} onResetQuiz={this.props.onResetQuiz} onNextQuestion={this.onNextQuestion.bind(this)} answered={this.state.answered} quizCompleted={this.props.quizCompleted} allow_finish={this.props.isLastQuestion}/>]

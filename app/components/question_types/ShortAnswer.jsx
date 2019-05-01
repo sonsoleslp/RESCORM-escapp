@@ -50,7 +50,9 @@ export default class ShortAnswer extends React.Component {
     let incorrect = this.props.objective.accomplished_score === 0;
     let feedback = !incorrect ? <i className="material-icons feedback-icon correct">check</i> : <i className="material-icons feedback-icon incorrect">close</i>;
     return [<div key="question" className="question">
-        <h1>{this.props.question.value}</h1>
+        {this.props.question.format === "html" ? <div dangerouslySetInnerHTML={{__html: this.props.question.value}}>
+        </div> : 
+        <h1>{this.props.question.value}</h1>}
         <input type="text" className="form-control" value={this.state.userAnswer} onChange={this.handleChange.bind(this)}/>
         {(this.props.config.feedback && this.state.answered) ? feedback : null}
 		{(this.props.config.feedback && this.state.answered && incorrect) ? <p className="feedbackInputAnswer">{this.props.question.answer.join(", ")}</p> : null}
