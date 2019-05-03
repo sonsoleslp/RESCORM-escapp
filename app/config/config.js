@@ -19,7 +19,7 @@
      adaptive:false,
      finish_screen:true,
      scorm:{
-       completion_threshold:window.config && window.config.threshold ? (window.config.threshold / 100) : 0.5,
+       completion_threshold: 1,
        score_threshold:window.config && window.config.threshold ? (window.config.threshold / 100) : 0.5,
      },
      n:5,
@@ -44,7 +44,7 @@
      adaptive:false,
      finish_screen:true,
      scorm:{
-       completion_threshold:window.config && window.config.threshold ? (window.config.threshold / 100) : 0.5,
+       completion_threshold:1,
        score_threshold:window.config && window.config.threshold ? (window.config.threshold / 100) : 0.5,
      },
      theme:"sketchy",

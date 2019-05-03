@@ -72,17 +72,17 @@ export default class MCQuestion extends React.Component {
     let choices = [];
     if(this.props.question.single){
       for(let i = 0; i < this.props.question.choices.length; i++){
-        choices.push(<MCQuestionChoiceSingle key={"MyQuestion_" + "question_choice_s_" + i} choice={this.props.question.choices[i]} checked={this.state.selected_choices_ids.indexOf(this.props.question.choices[i].id) !== -1} handleChange={this.handleChoiceChange.bind(this)} questionAnswered={this.state.answered} config={this.props.config} />);
+        choices.push(<MCQuestionChoiceSingle key={"MyQuestion_" + "question_choice_s_" + i} choice={this.props.question.choices[i]} checked={this.state.selected_choices_ids.indexOf(this.props.question.choices[i].id) !== -1} handleChange={this.handleChoiceChange.bind(this)} questionAnswered={this.state.answered} format={this.props.question.format} config={this.props.config} />);
       }
     } else {
       for(let i = 0; i < this.props.question.choices.length; i++){
-        choices.push(<MCQuestionChoice key={"MyQuestion_" + "question_choice_" + i} choice={this.props.question.choices[i]} checked={this.state.selected_choices_ids.indexOf(this.props.question.choices[i].id) !== -1} handleChange={this.handleChoiceChange.bind(this)} questionAnswered={this.state.answered} config={this.props.config} />);
+        choices.push(<MCQuestionChoice key={"MyQuestion_" + "question_choice_" + i} choice={this.props.question.choices[i]} checked={this.state.selected_choices_ids.indexOf(this.props.question.choices[i].id) !== -1} handleChange={this.handleChoiceChange.bind(this)} questionAnswered={this.state.answered} format={this.props.question.format} config={this.props.config} />);
       }
     }
     return (
     [<div key="question" className="question">
-        {this.props.question.format === "html" ? <div dangerouslySetInnerHTML={{__html: this.props.question.value}}>
-        </div> : 
+        {this.props.question.format === "html" ? <p dangerouslySetInnerHTML={{__html: this.props.question.value}}>
+        </p> : 
         <h1>{this.props.question.value}</h1>}
         {choices}
       </div>,

@@ -15,6 +15,8 @@ export let LOCALES = {
     "i.reset_quiz":"Reset quiz",
     "i.score":"Score",
     "i.title":"RESCORM Boilerplate",
+    "i.true":"True",
+    "i.false":"False",
   },
   es:{
     "i.answer":"Responder",
@@ -31,5 +33,7 @@ export let LOCALES = {
     "i.reset_question":"Resetear pregunta",
     "i.reset_quiz":"Resetear cuestionario",
     "i.score":"Puntuación",
+    "i.true":"Verdadero",
+    "i.false":"Falso",
   },
 };

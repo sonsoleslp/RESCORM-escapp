@@ -39,7 +39,9 @@ export default class MCQuestionChoiceSingle extends React.Component {
           <input type="radio" name="question" className=" " checked={this.props.checked} onChange={() => this.props.handleChange(this.props.choice)} disabled={showCorrection}/>
         </div>
         <div className="questionC2" onClick={() => showCorrection ? null : this.props.handleChange(this.props.choice)}>
-          <p>{this.props.choice.value}</p>
+          {this.props.format === "html" ? <p dangerouslySetInnerHTML={{__html: this.props.choice.value}}>
+          </p> : 
+          <p>{this.props.choice.value}</p>}
           {correct ? <i className="material-icons feedback-icon correct">check</i> : null}
           {incorrect ? <i className="material-icons feedback-icon incorrect">close</i> : null}
         </div>

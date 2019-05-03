@@ -6,6 +6,9 @@ import 'react-circular-progressbar/dist/styles.css';
 export default class FinishScreen extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      percentage: 0
+    }
   }
   _getFinishScreenTitle(progress_measure, score){
     let finishTitleText;
@@ -25,14 +28,18 @@ export default class FinishScreen extends React.Component {
   }
   render(){
     let finishTitleText = this._getFinishScreenTitle(this.props.tracking.progress_measure, this.props.tracking.score);
-    let percentage = Math.round(this.props.tracking.score * 100) || 0;
+    let {percentage} = this.state;
     return (
       <div className="finish_screen">
         <h1 id="finish_title">{this.props.msg}</h1>
         <div className="circle">
-        <CircularProgressbar percentage={percentage} initialAnimation text={percentage + "%"}/>
+        <CircularProgressbar percentage={percentage} initialAnimation text={(Math.round(this.props.tracking.score * 100) || 0) + "%"}/>
         </div>
       </div>
     );
+  }
+
+  componentDidMount(){
+    setTimeout(()=>{this.setState({percentage: Math.round(this.props.tracking.score * 100) || 0})}, 300);
   }
 }

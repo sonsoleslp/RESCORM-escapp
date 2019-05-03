@@ -49,8 +49,8 @@ export default class Numerical extends React.Component {
     let incorrect = this.props.objective.accomplished_score === 0;
     let feedback = !incorrect ? <i className="material-icons feedback-icon correct">check</i> : <i className="material-icons feedback-icon incorrect">close</i>;
     return [<div key="question" className="question">
-        {this.props.question.format === "html" ? <div dangerouslySetInnerHTML={{__html: this.props.question.value}}>
-        </div> : 
+        {this.props.question.format === "html" ? <p dangerouslySetInnerHTML={{__html: this.props.question.value}}>
+        </p> : 
         <h1>{this.props.question.value}</h1>}
         <input type="number" className="form-control" value={this.state.userAnswer} onChange={this.handleChange.bind(this)}/>
         {(this.props.config.feedback && this.state.answered) ? feedback : null}

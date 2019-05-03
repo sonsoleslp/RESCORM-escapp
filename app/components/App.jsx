@@ -41,11 +41,10 @@ export class App extends React.Component {
         <FinishScreen msg={this.props.tracking.score >= GLOBAL_CONFIG.scorm.score_threshold ? GLOBAL_CONFIG.successMessage : GLOBAL_CONFIG.failMessage} dispatch={this.props.dispatch} user_profile={this.props.user_profile} tracking={this.props.tracking} quiz={this.state.quiz} config={GLOBAL_CONFIG} I18n={I18n}/>
       );
     } else {
-      appContent = <div className="wholeScreen">
+      appContent = <div className="wholeScreen loading">
         Loading...
       </div>;
     }
-
     return (
       <div id="container" >
         <SCORM dispatch={this.props.dispatch} tracking={this.props.tracking} config={GLOBAL_CONFIG}/>

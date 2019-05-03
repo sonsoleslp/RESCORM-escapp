@@ -39,8 +39,8 @@ export default class Essay extends React.Component {
   }
   render(){
     return [<div key="question" className="question">
-        {this.props.question.format === "html" ? <div dangerouslySetInnerHTML={{__html: this.props.question.value}}>
-        </div> : 
+        {this.props.question.format === "html" ? <p dangerouslySetInnerHTML={{__html: this.props.question.value}}>
+        </p> : 
         <h1>{this.props.question.value}</h1>}
         <textarea className="form-control" value={this.state.userAnswer} onChange={this.handleChange.bind(this)}/>
       </div>,

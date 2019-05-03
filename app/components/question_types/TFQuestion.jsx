@@ -14,7 +14,7 @@ export default class TFQuestion extends React.Component {
       selected_choices_ids:[],
       answered:false,
     };
-    this.choices = [{id:true, value:"Verdadero"}, {id:false, value:"Falso"}];
+    this.choices = [{id:true, value: this.props.I18n.getTrans("i.true")}, {id:false, value:this.props.I18n.getTrans("i.false")}];
   }
   componentWillUpdate(prevProps, prevState){
     if(prevProps.question !== this.props.question){
@@ -63,8 +63,8 @@ export default class TFQuestion extends React.Component {
     }
     return (
     [<div className="question">
-        {this.props.question.format === "html" ? <div dangerouslySetInnerHTML={{__html: this.props.question.value}}>
-        </div> : 
+        {this.props.question.format === "html" ? <p dangerouslySetInnerHTML={{__html: this.props.question.value}}>
+        </p> : 
         <h1>{this.props.question.value}</h1>}
         {choices}
       </div>,
