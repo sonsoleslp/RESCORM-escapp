@@ -26,13 +26,15 @@ export default class FinishScreen extends React.Component {
   render(){
     let finishTitleText = this._getFinishScreenTitle(this.props.tracking.progress_measure, this.props.tracking.score);
     let percentage = Math.round(this.props.tracking.score * 100) || 0;
+    console.log(this.props.config.closeMessage)
     return (
       <div className="finish_screen">
         <h1 id="finish_title">{this.props.msg}</h1>
         <div className="circle">
         <CircularProgressbar percentage={percentage} initialAnimation text={percentage + "%"}/>
         </div>
-        {this.props.config.closeMessage ? <h6>{this.props.config.closeMessage}</h6> : null}
+        <br/>
+        {this.props.config.closeMessage ? <h5>{this.props.config.closeMessage}</h5> : null}
       </div>
     );
   }
