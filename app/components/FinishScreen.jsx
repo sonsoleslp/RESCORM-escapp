@@ -35,6 +35,8 @@ export default class FinishScreen extends React.Component {
         <div className="circle">
         <CircularProgressbar percentage={percentage} initialAnimation text={(Math.round(this.props.tracking.score * 100) || 0) + "%"}/>
         </div>
+        <br/>
+        {this.props.config.closeMessage ? <h5>{this.props.config.closeMessage}</h5> : null}
       </div>
     );
   }

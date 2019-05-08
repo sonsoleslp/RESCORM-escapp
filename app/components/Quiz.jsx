@@ -45,6 +45,7 @@ export default class Quiz extends React.Component {
     } else {
       this.props.dispatch(finishApp(true));
     }
+    window.scrollTo(0,0);
   }
   onResetQuiz(){
     this.setState({current_question_index:1});
