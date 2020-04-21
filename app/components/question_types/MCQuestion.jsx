@@ -36,24 +36,20 @@ export default class MCQuestion extends React.Component {
   onAnswerQuestion(){
     // Calculate score
     let nChoices = this.props.question.choices.length;
-    let correctAnswers = 0;
-    let incorrectAnswers = 0;
-    let blankAnswers = 0;
+    let scorePercentage = 0;
 
     for(let i = 0; i < nChoices; i++){
       let choice = this.props.question.choices[i];
       if(this.state.selected_choices_ids.indexOf(choice.id) !== -1){
         // Answered choice
-        if(choice.answer === true){
-          correctAnswers += 1;
+        if(choice.answer){
+          scorePercentage += choice.answer;
         } else {
-          incorrectAnswers += 1;
         }
       } else {
-        blankAnswers += 1;
       }
     }
-    let scorePercentage = Math.max(0, (correctAnswers - incorrectAnswers) / this.props.question.choices.filter(function(c){return c.answer === true;}).length);
+    scorePercentage = Math.max(0, Math.round(100 * scorePercentage) / 10000);
     // Send data via SCORM
     let objective = this.props.objective;
     this.props.dispatch(objectiveAccomplished(objective.id, objective.score * scorePercentage));

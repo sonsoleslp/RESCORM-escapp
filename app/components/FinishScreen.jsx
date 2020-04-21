@@ -7,7 +7,8 @@ export default class FinishScreen extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      percentage: 0
+      percentage: 0,
+      overridenMsg: null
     }
   }
   _getFinishScreenTitle(progress_measure, score){
@@ -36,7 +37,7 @@ export default class FinishScreen extends React.Component {
         <CircularProgressbar percentage={percentage} initialAnimation text={(Math.round(this.props.tracking.score * 100) || 0) + "%"}/>
         </div>
         <br/>
-        {this.props.config.closeMessage ? <h5>{this.props.config.closeMessage}</h5> : null}
+        {this.state.overridenMsg ? <h5>{this.state.overridenMsg}</h5> : (this.props.config.closeMessage ? <h5>{this.props.config.closeMessage}</h5> : null)}
       </div>
     );
   }
@@ -49,6 +50,8 @@ export default class FinishScreen extends React.Component {
         this.props.finishCallback("completed", percentage, this.props.success_status)
       }
     }, 300);
-
+    window.changeModalMsg  = (overridenMsg) => {
+      this.setState({overridenMsg})
+    }
   }
 }

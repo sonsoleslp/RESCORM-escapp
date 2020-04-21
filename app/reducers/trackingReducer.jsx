@@ -24,7 +24,6 @@ function trackingReducer(state = {}, action){
     if(updateProgress){
       objective.progress_measure = Math.max(0, Math.min(1, objective.progress_measure));
     }
-
     let updateScore = ((typeof objective.score === "number") && (typeof action.accomplished_score === "number"));
     if(updateScore){
       objective.accomplished_score = Math.max(0, Math.min(Math.max(0, Math.min(1, objective.score)), action.accomplished_score));

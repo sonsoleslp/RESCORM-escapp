@@ -23,7 +23,7 @@
        score_threshold:window.config && window.config.threshold ? (window.config.threshold / 100) : 0.5,
      },
      n:5,
-     theme:"sketchy",
+     theme:"materia",
    }, ...window.config},
    production:{...{
      title:"Quiz",
@@ -47,7 +47,7 @@
        completion_threshold:1,
        score_threshold:window.config && window.config.threshold ? (window.config.threshold / 100) : 0.5,
      },
-     theme:"sketchy",
+     theme:"materia",
      n:5,
    }, ...window.config},
  };

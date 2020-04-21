@@ -22,11 +22,11 @@ export default class QuestionButtons extends React.Component {
           <i className="material-icons">skip_next</i>
           <span>{this.props.allow_finish ? this.props.I18n.getTrans("i.finish_quiz") : this.props.I18n.getTrans("i.next")}</span>
         </button>
-        {(this.props.allow_finish) && (disable_next === false) ? (
+        {/*(this.props.allow_finish) && (disable_next === false) ? (
           <button className="resetQuiz btn btn-primary" onClick={this.props.onResetQuiz}>
             <i className="material-icons">replay</i>
             <span>{this.props.I18n.getTrans("i.reset_quiz")}</span>
-          </button>) : null}
+          </button>) : null*/}
       </div>
     );
   }
