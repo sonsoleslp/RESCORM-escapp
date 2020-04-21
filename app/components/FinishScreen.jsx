@@ -42,6 +42,13 @@ export default class FinishScreen extends React.Component {
   }
 
   componentDidMount(){
-    setTimeout(()=>{this.setState({percentage: Math.round(this.props.tracking.score * 100) || 0})}, 300);
+    setTimeout(()=>{
+      const percentage = Math.round(this.props.tracking.score * 100) || 0;
+      this.setState({percentage})
+      if (this.props.finishCallback && typeof this.props.finishCallback === "function" ) {
+        this.props.finishCallback("completed", percentage, this.props.success_status)
+      }
+    }, 300);
+
   }
 }
