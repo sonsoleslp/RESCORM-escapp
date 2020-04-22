@@ -58,34 +58,38 @@ export class App extends React.Component {
   }
 
   parseMoodleXML(xml){
-    xmlToJson(xml, (r, e)=>{
-      let questions = [];
-      for(let q in r.questions){
-        let question = r.questions[q];
-        switch (question.type){
-        case 'multichoice':
-          questions.push({type:'multiple_choice', format: question.format, value:question.questiontext, choices:(question.answers || []).map((a, id)=>{return {id, value:a.text, answer:a.score};}), single:question.single, penalty: question.penalty});
-          break;
-        case 'truefalse':
-          questions.push({type:'true_false', format: question.format, single:true, value:question.questiontext, answer:(question.answers || []).filter(a=> a.score === 100).map(a=> a.text)[0], penalty: question.penalty});
-          break;
-        case 'numerical':
-          questions.push({type:'numerical', format: question.format, value:question.questiontext, answer:(question.correctAnswer || []), tolerance:question.tolerance, penalty: question.penalty});
-          break;
-        case 'shortanswer':
-          questions.push({type:'shortanswer', format: question.format, value:question.questiontext, answer:(question.answers || []).filter(a=> a.score === 100).map(a=>a.text), penalty: question.penalty});
-          break;
-        case 'essay':
-          questions.push({type:'essay', format: question.format, value:question.questiontext, penalty: question.penalty});
-          break;
-        case 'matching':
-          break;
-        default:
-          // console.error("Unsupported");
+    try {
+      xmlToJson(xml.replace(/[\n]/mg, " "), (r, e)=>{
+        let questions = [];
+        for(let q in r.questions){
+          let question = r.questions[q];
+          switch (question.type){
+          case 'multichoice':
+            questions.push({type:'multiple_choice', format: question.format, value:question.questiontext, choices:(question.answers || []).map((a, id)=>{return {id, value:a.text, answer:a.score};}), single:question.single, penalty: question.penalty});
+            break;
+          case 'truefalse':
+            questions.push({type:'true_false', format: question.format, single:true, value:question.questiontext, answer:(question.answers || []).filter(a=> a.score === 100).map(a=> a.text)[0], penalty: question.penalty});
+            break;
+          case 'numerical':
+            questions.push({type:'numerical', format: question.format, value:question.questiontext, answer:(question.correctAnswer || []), tolerance:question.tolerance, penalty: question.penalty});
+            break;
+          case 'shortanswer':
+            questions.push({type:'shortanswer', format: question.format, value:question.questiontext, answer:(question.answers || []).filter(a=> a.score === 100).map(a=>a.text), penalty: question.penalty});
+            break;
+          case 'essay':
+            questions.push({type:'essay', format: question.format, value:question.questiontext, penalty: question.penalty});
+            break;
+          case 'matching':
+            break;
+          default:
+            // console.error("Unsupported");
+          }
         }
-      }
-      this.setState({quiz:{title:"", questions}});
-    });
+        this.setState({quiz:{title:"", questions}});
+      });
+    } catch (e) {
+      this.setState({loading:false});
+    }
   }
   decode(input){
     return decodeURIComponent(window.atob(input.slice(21)).split('').map(function(c){
