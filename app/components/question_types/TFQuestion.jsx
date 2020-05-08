@@ -62,13 +62,13 @@ export default class TFQuestion extends React.Component {
       choices.push(<MCQuestionChoiceSingle key={"MyQuestion_" + "question_choice_" + i} correct={this.choices[i].id === this.props.question.answer} choice={this.choices[i]} checked={this.state.selected_choices_ids.indexOf(this.choices[i].id) !== -1} handleChange={this.handleChoiceChange.bind(this)} questionAnswered={this.state.answered} config={this.props.config} tf/>);
     }
     return (
-    [<div className="question">
+    [<div className="question" key="1">
         {this.props.question.format === "html" ? <p dangerouslySetInnerHTML={{__html: this.props.question.value}}>
         </p> : 
-        <h1>{this.props.question.value}</h1>}
+        <h1 key="2">{this.props.question.value}</h1>}
         {choices}
       </div>,
-      <QuestionButtons I18n={this.props.I18n} onAnswerQuestion={this.onAnswerQuestion.bind(this)} onResetQuestion={this.onResetQuestion.bind(this)} onResetQuiz={this.props.onResetQuiz} onNextQuestion={this.onNextQuestion.bind(this)} answered={this.state.answered} quizCompleted={this.props.quizCompleted} allow_finish={this.props.isLastQuestion}/>]
+      <QuestionButtons key="3" I18n={this.props.I18n} onAnswerQuestion={this.onAnswerQuestion.bind(this)} onResetQuestion={this.onResetQuestion.bind(this)} onResetQuiz={this.props.onResetQuiz} onNextQuestion={this.onNextQuestion.bind(this)} answered={this.state.answered} quizCompleted={this.props.quizCompleted} allow_finish={this.props.isLastQuestion}/>]
     );
   }
 }

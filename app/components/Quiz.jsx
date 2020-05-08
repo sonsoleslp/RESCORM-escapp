@@ -17,9 +17,15 @@ export default class Quiz extends React.Component {
       questions = Utils.shuffleArray(questions);
     }
 
+
     if((typeof this.props.config.n === "number") && (this.props.config.n >= 1)){
       // Limit number of questions
       questions = questions.slice(0, Math.min(this.props.config.n, questions.length));
+    }
+    for (let q of questions) {
+       if (q.shuffleanswers) {
+          q.choices = Utils.shuffleArray(q.choices);
+       }
     }
 
     quiz.questions = questions;
