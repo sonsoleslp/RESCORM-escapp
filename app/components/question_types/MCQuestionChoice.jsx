@@ -10,12 +10,12 @@ export default class MCQuestionChoice extends React.Component {
     let incorrect = false;
     if(showCorrection && this.props.config.feedback){
       if(this.props.checked){
-        if(this.props.choice.answer){
+        if(this.props.choice.answer && this.props.choice.answer > 0){
           correct = true;
         } else {
           incorrect = true;
         }
-      } else if(this.props.choice.answer){
+      } else if(this.props.choice.answer && this.props.choice.answer > 0){
         correct = true;
       }
     }    

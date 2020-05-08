@@ -42,7 +42,7 @@ export default class MCQuestion extends React.Component {
       let choice = this.props.question.choices[i];
       if(this.state.selected_choices_ids.indexOf(choice.id) !== -1){
         // Answered choice
-        if(choice.answer){
+        if(choice.answer&& choice.answer > 0 ){
           scorePercentage += choice.answer;
         } else {
         }

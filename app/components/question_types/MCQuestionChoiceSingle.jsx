@@ -16,12 +16,12 @@ export default class MCQuestionChoiceSingle extends React.Component {
           } else {
             incorrect = true;
           }
-        } else if(this.props.correct || this.props.choice.answer){
+        } else if(this.props.correct || ((this.props.choice.answer && this.props.choice.answer > 0))){
           correct = true;
         } else {
           incorrect = true;
         }
-      } else if(this.props.correct || this.props.choice.answer){
+      } else if(this.props.correct || ((this.props.choice.answer && this.props.choice.answer > 0))){
         if(this.props.tf){
           if(this.props.correct){
             correct = true;

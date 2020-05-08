@@ -85,6 +85,7 @@ export class App extends React.Component {
             // console.error("Unsupported");
           }
         }
+        
         this.setState({quiz:{title:"", questions}});
       });
     } catch (e) {
