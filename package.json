@@ -74,7 +74,7 @@
     "husky": "0.15.0-beta.2",
     "jest": "21.2.0",
     "moodlexml-to-json": "^1.1.0",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.13.1",
     "open-browser-webpack-plugin": "0.0.5",
     "react-addons-test-utils": "15.6.2",
     "react-hot-loader": "3.1.1",
